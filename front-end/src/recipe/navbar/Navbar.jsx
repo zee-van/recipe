@@ -26,6 +26,7 @@ function Navbar() {
     const isUser = cookies.token ? true : false;
     const [divStyle, setDivStyle] = useState('absolute my-2 mx-2 right-0 rounded-md bg-zinc-900 border-2 border-[#ff4d00] p-4 w-[20rem] z-50 hidden')
 
+
     function changeStyle() {
         setDivStyle('absolute right-0 rounded-md bg-zinc-900 border-2 border-[#ff4d00] my-2 mx-2 p-4 w-[20rem] z-50')
     }
@@ -56,6 +57,8 @@ function Navbar() {
     }
 
 
+
+
     async function handleProfile() {
         try {
             const newMe = await recipeMakersDetails();
@@ -71,7 +74,7 @@ function Navbar() {
     return (
         <>
             <div className='py-2 px-8 bg-[#ff4d00] flex justify-between items-center'>
-                <div className='flex gap-2 items-center'>
+                <div className='flex gap-6 items-center'>
                     <Links path='/'>
                         <div className='flex relative items-center uppercase cursor-pointer'>
                             <img src={Logo} alt="" className='w-20' />
@@ -82,37 +85,46 @@ function Navbar() {
                         </div>
                     </Links>
                 </div>
-                <div className='flex gap-8 items-center'>
-                    <div>
-                        <div className='relative'>
-                            <Input className='w-[40rem] py-2 px-4 bg-zinc-800 outline-none rounded-md text-xl' name='query' type="text" placeholder='Search...' icon={<IoSearch />} value={query} onChange={(e) => handleSearchRecipe(e)} />
-                        </div>
-                        {(location.pathname !== '/' && query.trim() !== '' && srchRecipe.length !== 0) && (
-                            <ul className='sline-in absolute z-30 mt-8 border-2 w-[40rem] p-4 bg-zinc-900 rounded-md border-[#ff4d00] flex flex-col justify-center'>
-                                {srchRecipe.data ? (
-                                    srchRecipe.data.map((recipe) => {
-                                        // console.log(recipe)
-                                        return (
-                                            <li key={recipe._id} className='mt-2'>
-                                                <Links handleOnClick={() => setSrchRecipe([])} style='py-2 px-4 bg-zinc-800 flex items-center gap-8 rounded-full text-xl hover:bg-zinc-700' path={`/view-recipe/${recipe._id}`}>
-                                                    <img src={`data:image/jpeg;base64,${recipe.image}`} alt="" className='w-16 rounded-full aspect-square object-cover' />
-                                                    <p className='text-2xl font-bold'>{recipe.recipeName}</p>
-                                                </Links>
-                                            </li>
-                                        )
-                                    })
-                                ) : (
-                                    <>
-                                        <p className='text-2xl font-bold'>Loading..</p>
-                                    </>
-                                )
-                                }
+                <div>
+                    <div className='relative'>
+                        <Input className='w-[30rem] py-2 px-4 bg-zinc-800 outline-none rounded-md text-xl' name='query' type="text" placeholder='Search...' icon={<IoSearch />} value={query} onChange={(e) => handleSearchRecipe(e)} />
+                    </div>
+                    {(location.pathname !== '/' && query.trim() !== '' && srchRecipe.length !== 0) && (
+                        <ul className='sline-in absolute z-30 mt-8 border-2 w-[30rem] p-4 bg-zinc-900 rounded-md border-[#ff4d00] flex flex-col justify-center'>
+                            {srchRecipe.data ? (
+                                srchRecipe.data.map((recipe) => {
+                                    // console.log(recipe)
+                                    return (
+                                        <li key={recipe._id} className='mt-2'>
+                                            <Links handleOnClick={() => setSrchRecipe([])} style='py-2 px-4 bg-zinc-800 flex items-center gap-8 rounded-full text-xl hover:bg-zinc-700' path={`/view-recipe/${recipe._id}`}>
+                                                <img src={`data:image/jpeg;base64,${recipe.image}`} alt="" className='w-16 rounded-full aspect-square object-cover' />
+                                                <p className='text-xl font-bold'>{recipe.recipeName}</p>
+                                            </Links>
+                                        </li>
+                                    )
+                                })
+                            ) : (
+                                <>
+                                    <p className='text-2xl font-bold'>Loading..</p>
+                                </>
+                            )
+                            }
+                            {srchRecipe.data.length !== 0 && (
                                 <Links path={'/'} style='flex justify-end mt-4'>
                                     <Button>View Results</Button>
                                 </Links>
-                            </ul>
-                        )}
-
+                            )}
+                        </ul>
+                    )}
+                </div>
+                <div className='flex gap-8 items-center'>
+                    <div className='flex gap-2'>
+                        <Links path={'/Indian'} useActive={true} title='Indian' />
+                        <Links path={'/American'} useActive={true} title='American' />
+                        <Links path={'/British'} useActive={true} title='British' />
+                        <Links path={'/Chinese'} useActive={true} title='Chinese' />
+                        <Links path={'/Thai'} useActive={true} title='Thai' />
+                        <Links path={'/Canadian'} useActive={true} title='Canadian' />
                     </div>
                     <div className='cursor-pointer flex h-20 items-center'>
                         <Links path={isUser ? (location.pathname === '/' ? '/' : location.pathname) : '/login'}>
@@ -125,9 +137,9 @@ function Navbar() {
             <div className={divStyle} id='options'>
                 <span className='absolute cursor-pointer top-0 right-0 bg-[#ff4d00] rounded-md text-3xl' onClick={closeStyle}><IoIosClose /></span>
                 <div className='flex flex-col gap-4 mt-6'>
-                    <Links style='py-2 px-4 bg-[#ff4d00] rounded-full text-xl hover:bg-[#ff7034]' path={'/users-recipe'} title='View Recipe' handleOnClick={closeStyle} />
-                    <Links style='py-2 px-4 bg-[#ff4d00] rounded-full text-xl hover:bg-[#ff7034]' path={'/users-recipe-upload'} title='Upload Recipe' handleOnClick={closeStyle} />
-                    <Links style='py-2 px-4 bg-[#ff4d00] rounded-full text-xl hover:bg-[#ff7034]' path={'/profile'} title='Profile' handleOnClick={closeStyle} />
+                    <Links style='py-2 px-4 bg-[#ff4d00] rounded-full hover:bg-[#ff7034]' path={'/users-recipe'} title='View Recipe' handleOnClick={closeStyle} />
+                    <Links style='py-2 px-4 bg-[#ff4d00] rounded-full hover:bg-[#ff7034]' path={'/users-recipe-upload'} title='Upload Recipe' handleOnClick={closeStyle} />
+                    <Links style='py-2 px-4 bg-[#ff4d00] rounded-full hover:bg-[#ff7034]' path={'/profile'} title='Profile' handleOnClick={closeStyle} />
                 </div>
             </div>
         </>

@@ -22,9 +22,9 @@ function Home() {
   }, [])
   return (
     <>
-      <ul className='ul p-4'>
-        {searchedItem.length === 0 ? (
-          listedRecipe.data ? (
+      {searchedItem.length === 0 ? (
+        <ul className='ul p-4'>
+          {listedRecipe.data ? (
             listedRecipe.data.map((item) => {
               return (
                 <li key={item._id} className='bg-[#e9805c3b] rounded-md flex flex-col'>
@@ -45,14 +45,15 @@ function Home() {
               )
             })
           ) : (
-            <>
-              <div className='text-3xl font-bold text-stone-300 animate-pulse'>Loading...</div>
-            </>
-          )
-
-        ) : (
-          searchedItem ? (
-            searchedItem.map((item) => {
+            <div className='absolute top-1/2 left-1/2 translate-[-50%]'>
+              <div className="w-16 border-[8px] border-[#f3f3f3] rounded-full border-t-[#ff4d00] h-16 animate-spin"></div>
+            </div>
+          )}
+        </ul>
+      ) : (
+        searchedItem ? (
+          <ul className='ul p-4'>
+            {searchedItem.map((item) => {
               return (
                 <li key={item._id} className='bg-[#e9805c3b] rounded-md flex flex-col'>
                   <div>
@@ -70,15 +71,15 @@ function Home() {
                   </div>
                 </li>
               )
-            })
-          ) : (
-            <>
-              <div className='text-3xl font-bold text-stone-300 animate-pulse'>Loading...</div>
-            </>
-          )
+            })}
+          </ul>
+        ) : (
+          <div className='absolute top-1/2 left-1/2 translate-[-50%]'>
+            <div className="w-16 border-[8px] border-[#f3f3f3] rounded-full border-t-[#ff4d00] h-16 animate-spin"></div>
+          </div>
+        )
 
-        )}
-      </ul>
+      )}
     </>
   )
 }

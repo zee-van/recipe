@@ -31,9 +31,10 @@
 .ul {
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   gap: 1rem;
 }
+
 
 .ul-next {
   display: grid;
@@ -59,8 +60,15 @@ form {
 dialog {
   animation: slide-down-fade-in 0.2s ease-out forwards;
 }
-.sline-in{
+
+.sline-in {
   animation: slide-down-fade-in 0.2s ease-out forwards;
+}
+
+
+::-webkit-scrollbar {
+  /* width: 0; */
+  display: none;
 }
 
 @keyframes slide-up-fade-in {

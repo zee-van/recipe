@@ -100,13 +100,13 @@ function Update() {
                             className="absolute inset-0 bg-cover bg-center opacity-40"
                             style={{ backgroundImage: `url(data:image/jpeg;base64,${recipe.image})` }}
                         ></div>
-                        <div className='relative z-10 flex p-12 justify-between text-white'>
-                            <div className='text-center'>
+                        <div className='relative z-10 flex p-12 w-full justify-between text-white'>
+                            <div className=''>
                                 <h1 className='text-[4rem] font-bold'>{recipe.recipeName}</h1>
                                 <p>{recipe.description}</p>
                                 <p className='text-xl'>Meal Type: <strong>{recipe.mealType}</strong></p>
-                                <ul className='mt-4 border-2 border-[#ff4d00] rounded-md p-4 md:w-[28rem]'>
-                                    <h1 className='text-2xl font-bold'>Requirement Ingredients</h1>
+                                <ul className='mt-4 border-2 border-[#ff4d00] rounded-md p-4'>
+                                    <h1 className='text-2xl font-bold mb-4'>Requirement Ingredients</h1>
                                     {recipe.ingredients.map((ingredient, i) => (
                                         <li key={i} className='flex gap-2 text-xl'>
                                             <p>{i + 1})</p>
@@ -114,8 +114,8 @@ function Update() {
                                         </li>
                                     ))}
                                 </ul>
-                                <ul className='mt-4 border-2 border-[#ff4d00] rounded-md p-4 md:w-[28rem]'>
-                                    <h1 className='text-2xl font-bold'>Steps Involved</h1>
+                                <ul className='mt-4 border-2 border-[#ff4d00] rounded-md p-4'>
+                                    <h1 className='text-2xl font-bold mb-4'>Steps Involved</h1>
                                     {recipe.steps.map((step) => (
                                         <li key={step.stepNo} className='flex gap-2 text-xl'>
                                             <p>{step.stepNo})</p>

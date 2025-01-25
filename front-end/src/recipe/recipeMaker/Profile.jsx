@@ -83,7 +83,7 @@ function Profile() {
             </Modal>
             <Modal ref={logoutModal}>
                 <div className='p-4'>
-                    <h1 className='text-xl mt-2 text-stone-300'>Are you sure want't to logout.</h1>
+                    <h1 className='text-xl mt-2 text-stone-300'>Are you sure wan't to logout.</h1>
                     <div className='mt-8 flex gap-4 justify-end'>
                         <Button handleOnClick={() => handleLogout()}>Yes</Button>
                         <Button handleOnClick={closeLogoutModal}>No</Button>

@@ -10,6 +10,7 @@ import Profile from './recipe/recipeMaker/Profile'
 import Update from './recipe/recipeMaker/Update'
 import ViewRecipe from './recipe/users/ViewRecipe'
 import { SearchProvider } from './recipe/context/SearchContext'
+import FilterWithArea from './recipe/APIParts/FilterWithArea'
 // import './App.css'
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path='/users-recipe/:id' element={<Update />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/view-recipe/:id' element={<ViewRecipe />} />
+            <Route path='/:filterWithArea' element={<FilterWithArea />} />
           </Routes>
         </BrowserRouter>
       </SearchProvider>

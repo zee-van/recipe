@@ -7,6 +7,10 @@ import Links from '../../components/Links';
 import { IoIosClose } from 'react-icons/io';
 import { registerUser } from '../allapi';
 import { useNavigate } from 'react-router-dom';
+import { MdEmail } from "react-icons/md";
+import { FaLock } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+
 
 function Register() {
     const [username, setUsername] = useState('');
@@ -80,10 +84,10 @@ function Register() {
                     <h1 className='text-2xl text-center text-stone-300 font-bold'>Register</h1>
                     <div className='mt-8 flex flex-col gap-4 justify-center'>
                         <span className='text-red-600'>{error}</span>
-                        <Input label="Username" type='text' id='username' onChange={(e) => setUsername(e.target.value)} />
-                        <Input label="Email" type='text' id='email' onChange={(e) => setEmail(e.target.value)} />
-                        <Input label="Password" type='password' id='password' onChange={(e) => setPassword(e.target.value)} />
-                        <Input label="Conform Password" type='password' id='conformPassword' onChange={(e) => setConformPassword(e.target.value)} />
+                        <Input icon={<FaUser />} label="Username" type='text' id='username' onChange={(e) => setUsername(e.target.value)} />
+                        <Input icon={<MdEmail />} label="Email" type='text' id='email' onChange={(e) => setEmail(e.target.value)} />
+                        <Input icon={<FaLock />} label="Password" type='password' id='password' onChange={(e) => setPassword(e.target.value)} />
+                        <Input icon={<FaLock />} label="Conform Password" type='password' id='conformPassword' onChange={(e) => setConformPassword(e.target.value)} />
                     </div>
                     <div className='flex flex-col justify-center gap-4 mt-6'>
                         <Links path={exist ? '/' : '/register'} style='flex flex-col justify-center'>

@@ -7,6 +7,9 @@ import { useCookies } from 'react-cookie'
 import { loginUser } from '../allapi';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../modal/Modal';
+import { FaLock } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+
 
 function Login() {
     const navigate = useNavigate();
@@ -67,8 +70,8 @@ function Login() {
                     <h1 className='text-2xl text-center text-stone-300 font-bold'>Login</h1>
                     <div className='mt-8 flex flex-col gap-4 justify-center'>
                         <span className='text-red-600'>{error}</span>
-                        <Input label="Email" type='text' onChange={(e) => setEmail(e.target.value)} />
-                        <Input label="Password" type='text' onChange={(e) => setPassword(e.target.value)} />
+                        <Input label="Email" type='text' icon={<MdEmail />} onChange={(e) => setEmail(e.target.value)} />
+                        <Input label="Password" type='text' icon={<FaLock />} onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <div className='flex flex-col gap-4 mt-6'>
                         <Links path={isUser ? `/` : `/login`} title='Login' handleOnClick={handleLogin} style='py-2 px-4 uppercase text-center bg-[#ff4d00] hover:bg-[#ff7034] rounded-md'></Links>
